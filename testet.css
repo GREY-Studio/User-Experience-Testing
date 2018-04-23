@@ -1,0 +1,81 @@
+/*
+ * testet.css v1.0.0 | CSS Heatmap Library
+ * Emil Olsson <emlols-6>
+ *
+ * :: 2018-04-23 16:25
+ */
+
+ /* latin */
+@font-face {
+  font-family: 'hadrianbold';
+  font-style: normal;
+  font-weight: 900;
+  src: url('fonts/hadrianbold.woff');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.demo-wrapper {
+	position: absolute;
+	left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+	z-index: 5;
+	opacity: 0;
+	/*background-color: #e3e3e3;*/
+	pointer-events: none;
+}
+
+.demo-wrapper.hide {
+	opacity: 1;
+}
+
+.heat-map {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	/*background-color: green;*/
+}
+
+.heatmap-canvas {
+	/*pointer-events: auto;*/
+	display: block;
+}
+
+.real-wrapper {
+	position: relative;
+	z-index: 2;
+}
+
+.buttons {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	z-index: 50;
+	font-family: Montserrat;
+	font-style: normal;
+	text-transform: uppercase;
+	font-size: 0.6em;
+	letter-spacing: 1px;
+	pointer-events: none;
+}
+
+.buttons p {
+	display: inline-block;
+	padding: 8px;
+}
+
+.test-active .start {
+	color: red;
+}
+
+.timer {
+	text-align: right;
+}
+
+canvas {
+	display: none;
+}

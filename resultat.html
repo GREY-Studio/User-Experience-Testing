@@ -1,0 +1,27 @@
+<!DOCTYPE html>  
+<html>  
+  
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>Load Screenshot</title>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+</head>  
+  
+<body>  
+    <div class="main">  
+        <h1 style="text-transform:uppercase;font-family:Montserrat;font-size:1em;padding:30px;border:solid black 2px;text-align:center;">Resultat av programmet i form av heatmap</h1>  
+    </div>  
+    <div class="screenshot"></div>  
+    <script type="text/javascript">  
+        $(document).ready(function() {  
+            $.getJSON("./data.json", function(json) {  
+                //console.log(json);  
+                for (var i = 0; i < json.length; i++) {  
+                    $('.screenshot').append('<img src="' + json[i].imageURL + '"/>');  
+                }  
+            });  
+        });  
+    </script>  
+</body>  
+  
+</html>  
