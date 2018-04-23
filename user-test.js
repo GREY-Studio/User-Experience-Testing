@@ -38,7 +38,8 @@
 	  	$picture_heatmap,
 	  	$canv,
 	  	$inter,
-	  	$hm;
+	  	$hm,
+	  	$feedback;
 
   	/**
     * Function Wrapper_Size
@@ -92,6 +93,7 @@
 
 		} else if (e.which == 83 && $wrapper.hasClass('test-active')) {
 
+			$wrapper.toggleClass('hide');
 			finish_collection();
 
 		}
@@ -150,24 +152,22 @@
 	        dataType: "html",  
 	        success: function() {  
 	            //alert('Success!!');  
-	            //location.reload();  
+	            //location.reload(); 
+	            
+	            // (6).
+	            console.log($click_number);
+				$click_number = 0; 
 	        }  
 	    }); 
 
 	    // (4).
 	    clearInterval($inter);
-	    setTimeout(function() {$ti.text('0:00');}, 3000);
 	    $st.text('[S] Start Test');
 
 
 	    // (5).
-	    setTimeout(function() {$('.heatmap-canvas').remove();}, 3000);
 		$body.removeClass('test-active');
     	$wrapper.removeClass('test-active');
-
-    	// (6).
-		console.log($click_number);
-		$click_number = 0;
 
    	}
 
@@ -183,6 +183,7 @@
    	function link_clicked(e) {
    		if($wrapper.hasClass('test-active')) {
    			e.preventDefault();
+   			$wrapper.toggleClass('hide');
    			finish_collection();
    		}
    	}
@@ -216,7 +217,8 @@
     	$ti = $('.timer'),
     	$click_number = 0,
     	$canv = $('.heatmap-canvas'),
-    	$hm = $('heat-map');
+    	$hm = $('heat-map'),
+    	$feedback = false;
 
     	wrapper_size();
 
@@ -282,8 +284,11 @@ function post_data(imageURL) {
             image: imageURL  
         },  
         dataType: "html",  
-        success: function() {  
+        success: function() {
+        	$feedback = true;  
             alert('Success!!');  
+            setTimeout(function() {$('.timer').text('0:00');}, 2000);
+	       	setTimeout(function() {$('.heatmap-canvas').remove();}, 2000);
             //location.reload();  
         }  
     });    
